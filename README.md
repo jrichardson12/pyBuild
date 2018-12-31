@@ -11,3 +11,4 @@
 - [ ] Finish Mac Builder
 - [ ] Finish README
 - [ ] Re work Code
+- [ ] work on the installer
