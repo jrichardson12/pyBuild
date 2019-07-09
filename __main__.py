@@ -15,7 +15,6 @@ path = ""
 user = getpass.getuser()
 projectName = ""
 projectVenv = ""
-projectMainFile = ""
 githubUserName = ""
 fileList = []
 # ------------------------------------------------------------------------|
@@ -36,7 +35,6 @@ while numberOfTries > 0:
         if numberOfTries == 0:
             print('File name is not long enough')
             sys.exit(0)
-# End Project Name Check -------------------------------------------------|
 assert sys.version_info >= (3, 5)  # Check Python Version
 # ------------------------------------------------------------------------|
 # Create and Check Path---------------------------------------------------|
@@ -48,9 +46,25 @@ if checkPath:
     path = pyBuild.changePath(path, projectName, slash)
 else:
     sys.exit(0)
-print(path)
 pyBuild.createDir(path, projectName, slash)
 pyBuild.createDir(path, 'test', slash)
+# ------------------------------------------------------------------------|
+# Create Files needed for each OS                                         |
+# ------------------------------------------------------------------------|
+mainFile = pyBuild.createFile(path, '__main__.py', fileList)
+setupFile = pyBuild.createFile(path, 'setup.py', fileList)
+gitignoreFile = pyBuild.createFile(path, '.gitignore', fileList)
+readmeFile = pyBuild.createFile(path, "README.md", fileList)
+initFile = pyBuild.createFile(path + projectName + slash,
+                              "__init__.py",
+                              fileList)
+# dependency_file[0].write(includes.dependency.dependency_file())
+# driver_file[0].write(includes.mainFile.driver_file())
+# readme_file[0].write(includes.readme.readme_file())
+# gitignore_file[0].write(includes.gitignore.gitignore_file())
+# installer_file[0].write(includes.installer.winInstaller())
+# createGit(path, project_name, github_user_name)
+# createVenv(path, project_venv)
 # ------------------------------------------------------------------------|
 # Create Files needed for each OS                                         |
 # ------------------------------------------------------------------------|
