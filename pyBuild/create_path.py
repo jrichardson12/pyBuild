@@ -6,7 +6,7 @@
 import sys
 
 
-def create_path(user):
+def createPath(user):
     # TODO: Add path selection
     if sys.platform == 'linux':
         print('Linux Path')

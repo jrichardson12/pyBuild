@@ -1,1 +1,2 @@
-from pyBuild.create_path import create_path
+from pyBuild.create_path import createPath
+from pyBuild.check_path import checkPath
