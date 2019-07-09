@@ -5,21 +5,17 @@
 
 
 import os
-import sys
 
 
-def createDir(path, nameOfDir):
-    has_passed = False
+def createDir(path, nameOfDir, slash):
+    hasPassed = False
     try:
-        if sys.platform == 'win32':
-            os.mkdir(path + '\\' + nameOfDir)
-        else:
-            os.mkdir(path + '/' + nameOfDir)
+        os.mkdir(path + slash + nameOfDir)
     except OSError:
         print("Creation of the directory %s failed" % nameOfDir)
-        has_passed = False
+        hasPassed = False
     else:
         print("Successfully created the directory %s%s " %
               (path, nameOfDir))
-        has_passed = True
-    return has_passed
+        hasPassed = True
+    return hasPassed

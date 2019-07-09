@@ -28,5 +28,6 @@ def createPath(user):
     return path
 
 
-def changePath(path):
-    pass
+def changePath(path, projectName, slash):
+    path = path + projectName + slash
+    return path

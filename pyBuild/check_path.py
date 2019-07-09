@@ -5,21 +5,11 @@
 
 
 import os
-import sys
 
 
-def checkPath(path, projectName):
-    slashDictionary = {
-        'win': '\\',
-        'linux': '/',
-    }
-    slash = '/'
+def checkPath(path, projectName, slash):
     hasPassed = False
     # Create new Win File ----------------------------------------------------|
-    if sys.platform == 'win32':
-        slash = slashDictionary['win']
-    else:
-        slash = slashDictionary['linux']
     try:
         if os.path.isdir(path):
             if os.path.isdir(path + slash + projectName):
@@ -37,5 +27,4 @@ def checkPath(path, projectName):
     if hasPassed:
         print("Successfully created the directory %s%s " %
               (path, projectName))
-        path = path + projectName + slash
-    return path, hasPassed
+    return hasPassed

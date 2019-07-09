@@ -42,14 +42,15 @@ assert sys.version_info >= (3, 5)  # Check Python Version
 # Create and Check Path---------------------------------------------------|
 # ------------------------------------------------------------------------|
 slash = pyBuild.correctSlash()
-print(slash)
 path = pyBuild.createPath(user)
-print(path)
-path, checkPath = pyBuild.checkPath(path, projectName)
-if not checkPath:
+checkPath = pyBuild.checkPath(path, projectName, slash)
+if checkPath:
+    path = pyBuild.changePath(path, projectName, slash)
+else:
     sys.exit(0)
 print(path)
-# pyBuild.createDir(path, nameOfDir)
+pyBuild.createDir(path, projectName, slash)
+pyBuild.createDir(path, 'test', slash)
 # ------------------------------------------------------------------------|
 # Create Files needed for each OS                                         |
 # ------------------------------------------------------------------------|
