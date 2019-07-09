@@ -38,9 +38,13 @@ while numberOfTries > 0:
 # End Project Name Check -------------------------------------------------|
 assert sys.version_info >= (3, 5)  # Check Python Version
 # ------------------------------------------------------------------------|
-# Create Path ------------------------------------------------------------|
+# Create and Check Path---------------------------------------------------|
 # ------------------------------------------------------------------------|
 path = pyBuild.createPath(user)
+print(path)
+path, checkPath = pyBuild.checkPath(path, projectName)
+if not checkPath:
+    sys.exit(0)
 print(path)
 # ------------------------------------------------------------------------|
 # Create Files needed for each OS                                         |
