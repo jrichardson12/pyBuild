@@ -11,7 +11,7 @@ import sys
 def createPath(user):
     # TODO: Add path selection
     if sys.platform == 'linux':
-        print('Linux Path')
+        path = ('/home/' + user + '/projects/')
         # TODO: Add Linux path
     # Create new Win File ----------------------------------------------------|
     elif sys.platform == 'win32':
