@@ -46,8 +46,12 @@ if checkPath:
     path = pyBuild.changePath(path, projectName, slash)
 else:
     sys.exit(0)
+# ------------------------------------------------------------------------|
+# Create Dir                                                              |
+# ------------------------------------------------------------------------|
 pyBuild.createDir(path, projectName, slash)
 pyBuild.createDir(path, 'test', slash)
+pyBuild.createDir(path, 'build', slash)
 # ------------------------------------------------------------------------|
 # Create Files                                                            |
 # ------------------------------------------------------------------------|
