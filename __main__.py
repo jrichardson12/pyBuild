@@ -18,7 +18,7 @@ projectVenv = ""
 githubUserName = ""
 fileList = []
 # ------------------------------------------------------------------------|
-# Project Name Check -----------------------------------------------------|
+# Project Name Check                                                      |
 # ------------------------------------------------------------------------|
 numberOfTries = 3
 while numberOfTries > 0:
@@ -37,7 +37,7 @@ while numberOfTries > 0:
             sys.exit(0)
 assert sys.version_info >= (3, 5)  # Check Python Version
 # ------------------------------------------------------------------------|
-# Create and Check Path---------------------------------------------------|
+# Create and Check Path                                                   |
 # ------------------------------------------------------------------------|
 slash = pyBuild.correctSlash()
 path = pyBuild.createPath(user)
@@ -49,7 +49,7 @@ else:
 pyBuild.createDir(path, projectName, slash)
 pyBuild.createDir(path, 'test', slash)
 # ------------------------------------------------------------------------|
-# Create Files needed for each OS                                         |
+# Create Files                                                            |
 # ------------------------------------------------------------------------|
 mainFile = pyBuild.createFile(path, '__main__.py', fileList)
 setupFile = pyBuild.createFile(path, 'setup.py', fileList)
@@ -58,27 +58,17 @@ readmeFile = pyBuild.createFile(path, "README.md", fileList)
 initFile = pyBuild.createFile(path + projectName + slash,
                               "__init__.py",
                               fileList)
-# dependency_file[0].write(includes.dependency.dependency_file())
-# driver_file[0].write(includes.mainFile.driver_file())
-# readme_file[0].write(includes.readme.readme_file())
-# gitignore_file[0].write(includes.gitignore.gitignore_file())
-# installer_file[0].write(includes.installer.winInstaller())
-# createGit(path, project_name, github_user_name)
-# createVenv(path, project_venv)
 # ------------------------------------------------------------------------|
-# Create Files needed for each OS                                         |
+# Write Files                                                             |
 # ------------------------------------------------------------------------|
-if sys.platform == 'linux':
-    print('Linux Box')
-# Create new Win File ----------------------------------------------------|
-elif sys.platform == 'win32':
-    print('Win32 Box')
-elif sys.platform == 'cygwin':
-    print('Cygwin Box')
-elif sys.platform == 'darwin':
-    print('MAC box')
-else:
-    print('unable to detect OS')
-    sys.exit(0)
+mainFile[0].write(pyBuild.writeMain(projectName))
+setupFile[0].write(pyBuild.writeHeader())
+gitignoreFile[0].write(pyBuild.writeGitIgnore())
+initFile[0].write(pyBuild.writeHeader())
+pyBuild.createGit(path, projectName, githubUserName)
+pyBuild.createVenv(path, projectVenv)
+# ------------------------------------------------------------------------|
+# Close all Created Files                                                 |
+# ------------------------------------------------------------------------|
 for file in fileList:
     file.close()
