@@ -10,6 +10,7 @@ import pyBuild
 
 print(sys.platform)
 print(sys.version)
+slash = ''
 path = ""
 user = getpass.getuser()
 projectName = ""
@@ -40,12 +41,15 @@ assert sys.version_info >= (3, 5)  # Check Python Version
 # ------------------------------------------------------------------------|
 # Create and Check Path---------------------------------------------------|
 # ------------------------------------------------------------------------|
+slash = pyBuild.correctSlash()
+print(slash)
 path = pyBuild.createPath(user)
 print(path)
 path, checkPath = pyBuild.checkPath(path, projectName)
 if not checkPath:
     sys.exit(0)
 print(path)
+# pyBuild.createDir(path, nameOfDir)
 # ------------------------------------------------------------------------|
 # Create Files needed for each OS                                         |
 # ------------------------------------------------------------------------|

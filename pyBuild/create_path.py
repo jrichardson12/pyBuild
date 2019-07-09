@@ -26,3 +26,7 @@ def createPath(user):
         print('unable to detect OS')
         sys.exit(0)
     return path
+
+
+def changePath(path):
+    pass
